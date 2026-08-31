@@ -1,0 +1,71 @@
+Algorithm: Gaussian Elimination with Partial Pivoting
+
+step1. Start
+
+step2. Input the number of equations n.
+
+step3. If n <= 0, display "Invalid matrix size!" and stop.
+
+step4. Input the n x n coefficient matrix A.
+
+step5. Input the RHS vector b of size n.
+
+step6. Display the coefficient matrix A.
+
+step7. Display the RHS vector b.
+
+step8. Create the augmented matrix Aug by combining matrix A and vector b.
+
+step9. Display the augmented matrix.
+
+step10. Set error = False.
+
+Forward Elimination with Partial Pivoting
+
+step11. For each column i from 0 to n-1:
+
+a. Set max_row = i.
+
+b. Compare the absolute values of elements below and including the current pivot in column i.
+
+c. Find the row containing the maximum absolute pivot element.
+
+d. Swap the current row i with max_row if they are different.
+
+e. Check whether the pivot element Aug[i][i] is zero or nearly zero.
+
+f. If the pivot is zero, set error = True and stop forward elimination.
+
+g. For every row j below the pivot row:
+
+i. Calculate factor = Aug[j][i] / Aug[i][i].
+
+ii. Subtract factor * Aug[i][k] from Aug[j][k] for each column k.
+
+step12. Display the matrix after forward elimination.
+
+Back Substitution
+
+step13. If error == True, display "Matrix is singular or has no unique solution" and stop.
+
+step14. Otherwise, initialize solution array X of size n.
+
+step15. For each row i from n-1 down to 0:
+
+a. Set sum = 0.
+
+b. For j from i+1 to n-1, calculate sum = sum + Aug[i][j] * X[j].
+
+c. Calculate X[i] = (Aug[i][n] - sum) / Aug[i][i].
+
+step16. Display the final solutions X.
+
+Verification
+
+step17. For each equation i from 0 to n-1:
+
+a. Calculate LHS by multiplying row A[i] with solution X.
+
+b. Compare LHS with b[i] to verify the answers.
+
+step18. Stop
